@@ -53,9 +53,9 @@ const Board = () => {
     <div className="board">
       {gameState.isGameLost && (
         <div className="gameLost">
-          <h1>YOU'VE LOST</h1>
+          <h1>YOU'VE LOST!</h1>
           <p>Correct word was {solution}</p>
-          <p>Wanna play again? </p>
+          <p>Wanna try again? </p>
           <button
             className="button"
             onClick={() => {
@@ -70,7 +70,7 @@ const Board = () => {
       )}
       {gameState.isGameWon && (
         <div className="gameWon">
-          <h1>YOU'VE WON</h1> <p>You've won the game wanna try again?</p>
+          <h1>YOU'VE WON!</h1> <p>You've won the game wanna play again?</p>
           <button
             className="button"
             onClick={() => {
@@ -112,22 +112,25 @@ const Board = () => {
           <button onClick={() => setIsInfoClicked(false)}>OK</button>
         </div>
       )}
-
-      <h1 className="boardHeader">Wordle Clone</h1>
-      {guesses.map((guess, index) => {
-        let isCurrentGuess =
-          index === guesses.findIndex((guess) => guess === " ");
-        return (
-          <Line
-            key={index}
-            guess={
-              isCurrentGuess ? formik.values.currentGuess.slice(0, 5) : guess
-            }
-            isEntered={guess !== " "}
-            solution={solution}
-          />
-        );
-      })}
+      <div className="boardHeader">
+        <h1>Wordle Clone</h1>
+      </div>
+      <div className="grid">
+        {guesses.map((guess, index) => {
+          let isCurrentGuess =
+            index === guesses.findIndex((guess) => guess === " ");
+          return (
+            <Line
+              key={index}
+              guess={
+                isCurrentGuess ? formik.values.currentGuess.slice(0, 5) : guess
+              }
+              isEntered={guess !== " "}
+              solution={solution}
+            />
+          );
+        })}
+      </div>
       <form className="form" onSubmit={formik.handleSubmit}>
         <input
           type="text"
@@ -150,14 +153,6 @@ const Board = () => {
           ENTER
         </button>
       </form>
-      <div className="footer">
-        <a href={githubLink} rel="noreferrer" target="_blank">
-          <FaGithub className="icons" size={"1.3rem"} />
-        </a>
-        <a href={linkedinLink} target="_blank" rel="noreferrer">
-          <FaLinkedin className="icons" size={"1.3rem"} />
-        </a>
-      </div>
     </div>
   );
 };
