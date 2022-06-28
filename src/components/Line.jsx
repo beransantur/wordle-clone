@@ -1,8 +1,7 @@
 import React from "react";
-import Tile from "./Tile";
+import Box from "./Box";
 const Line = ({ guess, isEntered, solution }) => {
   guess = Array.from(guess);
-  console.log(solution);
   while (guess.length < 5) {
     guess.push(" ");
   }
@@ -11,7 +10,7 @@ const Line = ({ guess, isEntered, solution }) => {
     <div className="line">
       {Array.from(guess).map((char, i) => {
         char = char.toUpperCase();
-        let className = "tile";
+        let className = "box";
         if (isEntered) {
           if (char === solution[i]) {
             className += " success";
@@ -22,7 +21,7 @@ const Line = ({ guess, isEntered, solution }) => {
           }
         }
         return (
-          <Tile
+          <Box
             char={char}
             key={i}
             isEntered={isEntered}

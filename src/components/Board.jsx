@@ -83,7 +83,7 @@ const Board = () => {
           </button>
         </div>
       )}
-      <div className="info">
+      <div className="howToPlayButton">
         <button
           onClick={(event) => {
             event.preventDefault();
@@ -147,7 +147,7 @@ const Board = () => {
             gameState.isGameWon === true
           }
         >
-          Click me
+          ENTER
         </button>
       </form>
       <div className="footer">

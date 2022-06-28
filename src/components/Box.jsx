@@ -1,6 +1,6 @@
-const Tile = ({ char, className }) => {
+const Box = ({ char, className }) => {
   char = char.toUpperCase();
   return <div className={className}>{char}</div>;
 };
 
-export default Tile;
+export default Box;
